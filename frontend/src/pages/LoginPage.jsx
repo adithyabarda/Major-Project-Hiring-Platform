@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500">
@@ -60,9 +61,9 @@ const LoginPage = () => {
           </div>
           <p className="text-xs text-center dark:text-gray-600">
             Don&apos;t have an account?{' '}
-            <a rel="noopener noreferrer" href="#" className="underline dark:text-gray-800">
+            <Link to="/signup" className="underline dark:text-gray-800">
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
 
@@ -123,9 +124,9 @@ const LoginPage = () => {
           </div>
           <p className="text-xs text-center dark:text-gray-600">
             Don&apos;t have an account?{' '}
-            <a rel="noopener noreferrer" href="#" className="underline dark:text-gray-800">
+            <Link to="/signup" className="underline dark:text-gray-800">
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
