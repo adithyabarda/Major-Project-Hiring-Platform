@@ -1,10 +1,22 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 const SignUpPageUser = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/dev-home");
+  };
+
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 to-purple-500">
-      <div className="bg-white p-10 rounded-lg shadow-md w-120">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
-        <form>
-          <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="bg-white p-8 sm:p-10 rounded-lg shadow-xl w-full max-w-md md:max-w-lg">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          Developer Sign Up
+        </h2>
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
@@ -14,7 +26,8 @@ const SignUpPageUser = () => {
                 id="name"
                 name="name"
                 required
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2"
+                placeholder="Enter your name"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring focus:ring-blue-300"
               />
             </div>
             <div>
@@ -26,7 +39,8 @@ const SignUpPageUser = () => {
                 id="email"
                 name="email"
                 required
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2"
+                placeholder="Enter your email"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring focus:ring-blue-300"
               />
             </div>
             <div>
@@ -38,7 +52,8 @@ const SignUpPageUser = () => {
                 id="password"
                 name="password"
                 required
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2"
+                placeholder="Enter your password"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring focus:ring-blue-300"
               />
             </div>
             <div>
@@ -50,7 +65,8 @@ const SignUpPageUser = () => {
                 id="institute"
                 name="institute"
                 required
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2"
+                placeholder="Enter your institute"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring focus:ring-blue-300"
               />
             </div>
             <div>
@@ -62,11 +78,15 @@ const SignUpPageUser = () => {
                 id="gitProfile"
                 name="gitProfile"
                 required
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2"
+                placeholder="Enter GitHub URL"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring focus:ring-blue-300"
               />
             </div>
             <div>
-              <label htmlFor="codingProfile" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="codingProfile"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Coding Profile (e.g., LeetCode, HackerRank)
               </label>
               <input
@@ -74,17 +94,27 @@ const SignUpPageUser = () => {
                 id="codingProfile"
                 name="codingProfile"
                 required
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2"
+                placeholder="Enter profile URL"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring focus:ring-blue-300"
               />
             </div>
           </div>
-          <div className="mb-4 text-center">
+          <div className="text-center">
             <button
               type="submit"
-              className="w-32 dark:bg-violet-500 text-white py-2 rounded-full hover:bg-violet-600"
+              className="w-36 bg-gradient-to-r from-violet-500 to-purple-500 text-white py-2 rounded-full hover:from-violet-600 hover:to-purple-600 focus:ring focus:ring-violet-300"
             >
               Sign Up
             </button>
+          </div>
+          <div className="mt-6 text-center text-sm text-gray-600">
+            Already have an account?{" "}
+            <a
+              href="/login"
+              className="text-blue-500 hover:text-blue-700 font-medium"
+            >
+              Login here
+            </a>
           </div>
         </form>
       </div>
