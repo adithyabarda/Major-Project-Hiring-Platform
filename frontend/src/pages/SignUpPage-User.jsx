@@ -87,7 +87,7 @@ const SignUpPageUser = () => {
                 htmlFor="codingProfile"
                 className="block text-sm font-medium text-gray-700"
               >
-                Coding Profile (e.g., LeetCode, HackerRank)
+                Coding Profile (e.g., LeetCode)
               </label>
               <input
                 type="url"
@@ -102,15 +102,15 @@ const SignUpPageUser = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="w-36 bg-gradient-to-r from-violet-500 to-purple-500 text-white py-2 rounded-full hover:from-violet-600 hover:to-purple-600 focus:ring focus:ring-violet-300"
+              className="w-32 text-white py-2 rounded-full bg-violet-500 dark:bg-violet-500 hover:bg-violet-700"
             >
               Sign Up
             </button>
           </div>
           <div className="mt-6 text-center text-sm text-gray-600">
-            Already have an account?{" "}
+            Already have an account?{" "} 
             <a
-              href="/login"
+              href="/LoginPageUser"
               className="text-blue-500 hover:text-blue-700 font-medium"
             >
               Login here

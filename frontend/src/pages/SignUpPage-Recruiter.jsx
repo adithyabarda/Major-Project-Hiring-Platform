@@ -2,7 +2,7 @@ const SignUpPageRecruiter = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 to-purple-500">
       <div className="bg-white p-10 rounded-lg shadow-md w-120">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Recruiter Sign Up</h2>
         <form>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
@@ -81,10 +81,19 @@ const SignUpPageRecruiter = () => {
           <div className="mb-4 text-center">
             <button
               type="submit"
-              className="w-32 dark:bg-violet-500 text-white py-2 rounded-full hover:bg-violet-600"
+              className="w-32 text-white py-2 rounded-full bg-violet-500 dark:bg-violet-500 hover:bg-violet-700"
             >
               Sign Up
             </button>
+          </div>
+          <div className="mt-6 text-center text-sm text-gray-600">
+            Already have an account?{" "} 
+            <a
+              href="/LoginPageRecruiter"
+              className="text-blue-500 hover:text-blue-700 font-medium"
+            >
+              Login here
+            </a>
           </div>
         </form>
       </div>

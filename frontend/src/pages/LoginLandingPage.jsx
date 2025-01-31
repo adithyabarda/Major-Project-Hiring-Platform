@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-const SignUpLandingPage = () => {
+const LoginLandingPage = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 to-purple-500">
       <div className="flex justify-between items-center w-11/12 max-w-7xl p-8">
@@ -11,9 +11,9 @@ const SignUpLandingPage = () => {
             We are the market-leading technical interview platform to identify and hire developers with the right skills.
           </p>
           <div className="text-center">
-            <Link to="/Recruitersignup">
+            <Link to="/LoginPageRecruiter">
             <button className="w-32 text-white py-2 rounded-full bg-violet-500 dark:bg-violet-500 hover:bg-violet-700">
-              SignUp
+              Login
             </button>
             </Link>
           </div>
@@ -26,9 +26,9 @@ const SignUpLandingPage = () => {
             Join over 21 million developers, practice coding skills, prepare for interviews, and get hired.
           </p>
           <div className="text-center">
-            <Link to="/Developersignup">
+            <Link to="/LoginPageUser">
             <button className="w-32 text-white py-2 rounded-full bg-violet-500 dark:bg-violet-500 hover:bg-violet-700">
-              SignUp
+              Login
             </button>
             </Link>
           </div>
@@ -38,4 +38,4 @@ const SignUpLandingPage = () => {
   );
 };
 
-export default SignUpLandingPage;
+export default LoginLandingPage;

@@ -7,13 +7,13 @@ const Navbar = () => (
       <div>
         <Link
           to="/login"
-          className="px-4 py-2 dark:bg-violet-500 text-white justify-center rounded-full hover:bg-violet-600 mx-2"
+          className="px-4 py-2 bg-violet-500 dark:bg-violet-500 text-white justify-center rounded-full hover:bg-violet-700 mx-2"
         >
           Login
         </Link>
         <Link
           to="/signup"
-          className="px-4 py-2 dark:bg-violet-500 text-white justify-center rounded-full hover:bg-violet-600 mx-2"
+          className="px-4 py-2 bg-violet-500 dark:bg-violet-500 text-white justify-center rounded-full hover:bg-violet-700 mx-2"
         >
           Sign Up
         </Link>
