@@ -7,6 +7,9 @@ import SignUpPageUser from "./pages/SignUpPage-User";
 import SignUpLandingPage from "./pages/SignUpLandingPage";
 import SignUpPageRecruiter from "./pages/SignUpPage-Recruiter";
 import DevHomePage from "./pages/DevHomePage";
+import CompaniesListPage from "./pages/CompaniesListPage";
+import ProfilePage from "./pages/ProfilePage";
+import ProblemDetailPage from "./pages/ProblemDetailPage";
 
 const App = () => {
   const isDeveloperLoggedIn = true;
@@ -22,6 +25,9 @@ const App = () => {
           <Route path="/LoginPageUser" element={<LoginPageUser />}/>
           <Route path="/Developersignup" element={<SignUpPageUser />} />
           <Route path="/Recruitersignup" element={<SignUpPageRecruiter />} />
+          <Route path="/companies" element={<CompaniesListPage />} />
+          <Route path="/problem/:id" element={<ProblemDetailPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
           {isDeveloperLoggedIn && (
             <Route path="/dev-home" element={<DevHomePage />} />
           )}
