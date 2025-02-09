@@ -10,6 +10,9 @@ import DevHomePage from "./pages/DevHomePage";
 import CompaniesListPage from "./pages/CompaniesListPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProblemDetailPage from "./pages/ProblemDetailPage";
+import RecruiterJobPosting from "./pages/JobPostingPage";
+import RecruiterProfile from "./pages/RecruiterProfile";
+import RecruiterStudents from "./pages/RecruiterStudents";
 
 const App = () => {
   const isDeveloperLoggedIn = true;
@@ -19,6 +22,9 @@ const App = () => {
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Routes>
           <Route path="/" element={<HeroPage />} />
+          <Route path="/recruiter/profile" element={<RecruiterProfile />} />
+<Route path="/recruiter/students" element={<RecruiterStudents />} />
+<Route path="/recruiter/job-posting" element={<RecruiterJobPosting />} />
           <Route path="/login" element={<LoginLandingPage />} />
           <Route path="/signup" element={<SignUpLandingPage />} />
           <Route path="/LoginPageRecruiter" element={<LoginPageRecruiter />}/>
