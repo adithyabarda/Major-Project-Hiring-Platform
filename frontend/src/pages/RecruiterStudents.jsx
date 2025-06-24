@@ -1,39 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RecruiterNavbar from "../components/RecruiterNavbar";
 import { FaFilter, FaEnvelope, FaStar } from "react-icons/fa";
 
 const RecruiterStudents = () => {
-  // Sample student data
-  const studentsData = [
-    { id: 1, name: "John Doe", problemsSolved: 250, topic: "Dynamic Programming" },
-    { id: 2, name: "Jane Smith", problemsSolved: 300, topic: "Graph" },
-    { id: 3, name: "Alice Johnson", problemsSolved: 180, topic: "Sorting & Searching" },
-    { id: 4, name: "Bob Brown", problemsSolved: 350, topic: "Graph" },
-    { id: 5, name: "Charlie Davis", problemsSolved: 120, topic: "Dynamic Programming" },
-    { id: 6, name: "Daniel Wilson", problemsSolved: 270, topic: "Tree" },
-  ];
-
-  // State for filters
+  const [students, setStudents] = useState([]);
   const [minSolved, setMinSolved] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("All Topics");
-  const [favorites, setFavorites] = useState([]);
 
-  // Filtering logic
-  const filteredStudents = studentsData.filter((student) => {
+  // ✅ Fetch Students from Backend
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await fetch("http://localhost:5001/students");
+        const data = await response.json();
+        setStudents(data);
+      } catch (error) {
+        console.error("Failed to fetch students:", error);
+      }
+    };
+    fetchStudents();
+  }, []);
+
+  // ✅ Toggle Favorite Status in Database
+  const toggleFavorite = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5001/students/${id}/favorite`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to update favorite status");
+      }
+  
+      const updatedStudent = await response.json();
+  
+      // Update the local students state with the updated favorite status
+      setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+          student._id === id ? { ...student, isFavorite: updatedStudent.student.isFavorite } : student
+        )
+      );
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  
+  
+
+  // ✅ Apply Filters
+  const filteredStudents = students.filter((student) => {
     return (
       (minSolved === "" || student.problemsSolved >= parseInt(minSolved)) &&
-      (selectedTopic === "All Topics" || student.topic === selectedTopic)
+      (selectedTopic === "All Topics" || student.mainTopic === selectedTopic)
     );
   });
-
-  // Toggle favorite student
-  const toggleFavorite = (id) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.includes(id)
-        ? prevFavorites.filter((favId) => favId !== id)
-        : [...prevFavorites, id]
-    );
-  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -81,10 +102,10 @@ const RecruiterStudents = () => {
           <tbody>
             {filteredStudents.length > 0 ? (
               filteredStudents.map((student) => (
-                <tr key={student.id} className="border-b">
+                <tr key={student._id} className="border-b">
                   <td className="p-3">{student.name}</td>
                   <td className="p-3">{student.problemsSolved}</td>
-                  <td className="p-3">{student.topic}</td>
+                  <td className="p-3">{student.mainTopic}</td>
                   <td className="p-3">
                     <button className="bg-green-500 text-white px-3 py-1 rounded flex items-center space-x-2">
                       <FaEnvelope />
@@ -92,10 +113,10 @@ const RecruiterStudents = () => {
                     </button>
                   </td>
                   <td className="p-3 text-center">
-                    <button onClick={() => toggleFavorite(student.id)}>
+                    <button onClick={() => toggleFavorite(student._id)}>
                       <FaStar
                         className={`text-2xl ${
-                          favorites.includes(student.id) ? "text-yellow-400" : "text-gray-400"
+                          student.isFavorite ? "text-yellow-400" : "text-gray-400"
                         }`}
                       />
                     </button>
